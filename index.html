@@ -30,10 +30,11 @@ html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}.opt,.q,.st 
 .mb{display:none}.lb{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:12px 4px 2px}.mn{display:flex;flex-direction:column;gap:6px}.mn button{width:100%;text-align:left;border-radius:10px;padding:10px 12px;font-size:14px}
 @media(min-width:761px){body{padding-left:260px}nav{position:fixed;top:0;left:0;bottom:0;width:260px;display:block;overflow-y:auto;border-bottom:0;border-right:1px solid var(--bd);padding:16px 12px}}
 @media(max-width:760px){nav{display:block;overflow:visible}.mb{display:block;width:100%;text-align:left;border-radius:10px;font-weight:600;font-size:14px}.mn{display:none;margin-top:8px;max-height:70vh;overflow-y:auto}nav.open .mn{display:flex}}
+.gt{display:block;width:100%;text-align:left;margin-bottom:10px;padding:11px 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit;font-weight:600;cursor:pointer}#gr{display:none}#gr.show{display:flex}
 </style></head><body>
 <nav id="nav"></nav>
 <main><h1 id="t"></h1><div class="bar"><span id="sc"></span><button id="rs" style="background:none;border:0;color:var(--pri);cursor:pointer;font:inherit">Làm lại chủ đề</button></div>
-<div class="grid" id="gr"></div><div class="card" id="cd"></div><div class="ctl"><button id="pv">← Câu trước</button><button class="p" id="nx">Câu sau →</button></div></main>
+<button class="gt" id="gt" onclick="$('gr').classList.toggle('show');lab()"></button><div class="grid" id="gr"></div><div class="card" id="cd"></div><div class="ctl"><button id="pv">← Câu trước</button><button class="p" id="nx">Câu sau →</button></div></main>
 <script>
 const T=[
 {n:"CĐ1 · Trí tuệ nhân tạo",q:[
@@ -230,5 +231,6 @@ $("cd").innerHTML=`<p class="q">Câu ${qi+1}. ${e(q[0])}</p>`+q[1].map((s,j)=>{c
 $("pv").disabled=qi==0;$("nx").disabled=qi==n-1}
 function tf(j,c){(B[ti][qi]=B[ti][qi]||[])[j]=c;draw()}
 $("pv").onclick=()=>{qi--;draw()};$("nx").onclick=()=>{qi++;draw()};
-$("rs").onclick=()=>{A[ti]={};B[ti]={};qi=0;draw()};draw();
+$("rs").onclick=()=>{A[ti]={};B[ti]={};qi=0;draw()};function lab(){const n=m?TF[ti].length:T[ti].q.length;$("gt").textContent=`🔢 Câu ${qi+1}/${n} · `+($("gr").classList.contains("show")?"Thu gọn ▴":"Chọn câu ▾")}
+let _d=draw;draw=function(){_d();lab()};$("gr").onclick=e=>{if(e.target.closest("button")){$("gr").classList.remove("show");lab()}};draw();
 </script></body></html>
