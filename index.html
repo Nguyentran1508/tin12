@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ôn tập Tin học 12 – HKI</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--tx:#1b2433;--mut:#5d6b82;--pri:#2563eb;--ok:#16a34a;--okb:#dcfce7;--no:#dc2626;--nob:#fee2e2;--bd:#d8dfeb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1624;--card:#182236;--tx:#e8edf6;--mut:#9fb0c9;--pri:#5b8cff;--okb:#12351f;--nob:#3b1717;--bd:#2c3a54;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--bd);display:flex;gap:6px;padding:10px 12px;overflow-x:auto}
+nav button{flex:none;border:1px solid var(--bd);background:transparent;color:var(--tx);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:14px}
+nav button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+main{max-width:820px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:4px 0 12px}
+.bar{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;margin-bottom:8px}
+.grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.grid button{width:36px;height:36px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer}
+.grid .cur{outline:2px solid var(--pri)}.grid .ok{background:var(--okb);border-color:var(--ok)}.grid .no{background:var(--nob);border-color:var(--no)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px}
+.q{font-weight:600;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border:1px solid var(--bd);border-radius:10px;background:transparent;color:var(--tx);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--pri)}.opt.ok{background:var(--okb);border-color:var(--ok)}.opt.no{background:var(--nob);border-color:var(--no)}
+.ex{margin-top:14px;padding:12px 14px;border-left:4px solid var(--pri);background:var(--bg);border-radius:6px}
+.ctl{display:flex;justify-content:space-between;margin-top:16px;gap:8px}
+.ctl button{padding:10px 16px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);cursor:pointer;font:inherit}
+.ctl .p{background:var(--pri);color:#fff;border-color:var(--pri)}
+.st{padding:10px 0;border-top:1px solid var(--bd)}.st b{display:block;margin-bottom:6px;font-weight:600}.tf{margin-right:8px;padding:6px 20px;border:1px solid var(--bd);border-radius:8px;background:transparent;color:var(--tx);cursor:pointer;font:inherit}.tf.ok{background:var(--okb);border-color:var(--ok)}.tf.no{background:var(--nob);border-color:var(--no)}
+html{-webkit-text-size-adjust:100%}button{touch-action:manipulation}.opt,.q,.st b,.ex{overflow-wrap:anywhere}
+@media(max-width:600px){body{font-size:15px}nav{padding:8px;gap:4px;scrollbar-width:none}nav button{padding:8px 11px;font-size:13px}main{padding:10px}h1{font-size:17px}.bar{font-size:13px}.grid{gap:5px}.grid button{width:calc((100% - 35px)/8);min-width:38px;height:42px;font-size:14px}.card{padding:12px;border-radius:12px}.q{font-size:15.5px}.opt{padding:12px;min-height:48px;font-size:15px}.st{padding:10px 0}.tf{width:calc(50% - 5px);margin:0 4px 0 0;min-height:44px;padding:8px 0}.ex{font-size:14px}.ctl{position:sticky;bottom:0;background:var(--bg);padding:10px 0 8px;margin-top:10px}.ctl button{flex:1;min-height:46px}}
+@media(max-width:360px){nav button{padding:7px 9px;font-size:12px}.grid button{height:38px}}
+.mb{display:none}.lb{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);margin:12px 4px 2px}.mn{display:flex;flex-direction:column;gap:6px}.mn button{width:100%;text-align:left;border-radius:10px;padding:10px 12px;font-size:14px}
+@media(min-width:761px){body{padding-left:260px}nav{position:fixed;top:0;left:0;bottom:0;width:260px;display:block;overflow-y:auto;border-bottom:0;border-right:1px solid var(--bd);padding:16px 12px}}
+@media(max-width:760px){nav{display:block;overflow:visible}.mb{display:block;width:100%;text-align:left;border-radius:10px;font-weight:600;font-size:14px}.mn{display:none;margin-top:8px;max-height:70vh;overflow-y:auto}nav.open .mn{display:flex}}
+</style></head><body>
+<nav id="nav"></nav>
+<main><h1 id="t"></h1><div class="bar"><span id="sc"></span><button id="rs" style="background:none;border:0;color:var(--pri);cursor:pointer;font:inherit">Làm lại chủ đề</button></div>
+<div class="grid" id="gr"></div><div class="card" id="cd"></div><div class="ctl"><button id="pv">← Câu trước</button><button class="p" id="nx">Câu sau →</button></div></main>
+<script>
+const T=[
+{n:"CĐ1 · Trí tuệ nhân tạo",q:[
+["Phương án nào nêu đúng hai phân loại chính của AI?","AI Hẹp (ANI) và AI Siêu thông minh (ASI)|AI Hẹp (ANI) và AI Tổng quát (AGI)|AI Tổng quát (AGI) và AI Tự học (ALI)|AI Tổng quát (AGI) và AI Siêu thông minh (ASI)",1,"Đề cương chia AI thành AI Hẹp (ANI) và AI Tổng quát (AGI)."],
+["Phát biểu nào phù hợp khi nói về khả năng của AI Hẹp?","Tự chuyển đổi để giải quyết các nhiệm vụ khác nhau|Suy luận giải quyết vấn đề phức tạp như con người|Hiểu ngôn ngữ tự nhiên và tạo văn bản giống người|Giải quyết nhiệm vụ cụ thể theo những gì đã được học",3,"AI Hẹp chỉ thực hiện một hoặc một số nhiệm vụ giới hạn; hầu hết AI hiện nay thuộc loại này."],
+["Phương án nào đúng về khả năng suy luận của AI?","Trích xuất thông tin từ dữ liệu để học|Cảm nhận môi trường qua cảm biến|Vận dụng logic và tri thức để đưa ra quyết định hoặc kết luận|Hiểu và tạo ra văn bản như người",2,"Suy luận = dùng tri thức và logic để ra quyết định hoặc giải quyết vấn đề."],
+["Phương án nào đúng về khả năng nhận thức của AI?","Trích xuất thông tin từ dữ liệu để học|Cảm nhận và hiểu môi trường thông qua cảm biến, thiết bị đầu vào|Vận dụng logic để ra quyết định|Tìm cách giải quyết tình huống phức tạp",1,"Nhận thức = cảm nhận và hiểu biết môi trường qua cảm biến và thiết bị đầu vào."],
+["Phương án nào đúng về khả năng học của AI?","Trích xuất thông tin từ dữ liệu để học và tích lũy tri thức|Cảm nhận môi trường qua cảm biến|Vận dụng logic để kết luận|Giải quyết tình huống phức tạp",0,"Khả năng Học: trích xuất thông tin từ dữ liệu để học và tích lũy tri thức."],
+["Phát biểu nào phù hợp nhất khi nói về trợ lí ảo?","Phần mềm giúp máy tính tự học và giải quyết vấn đề|Công nghệ AI hiểu và thực hiện yêu cầu bằng ngôn ngữ tự nhiên|Công nghệ AI nhận dạng suy nghĩ của con người|Thuật toán cho máy tính tư duy như người",1,"Trợ lí ảo tương tác với người dùng bằng ngôn ngữ tự nhiên để tìm thông tin, gửi tin nhắn, thực hiện nhiệm vụ."],
+["Phần mềm nào là trợ lí ảo của Apple?","Google Assistant|Alexa|Bixby|Siri",3,"Siri (Apple), Alexa (Amazon), Bixby (Samsung), Google Assistant (Google)."],
+["Phần mềm nào là trợ lí ảo của Samsung?","Google Assistant|Alexa|Bixby|Siri",2,"Bixby là trợ lí ảo của Samsung."],
+["Thiết bị nào KHÔNG sử dụng AI để điều khiển tự động?","Xe ô tô không người lái|Ấm điện siêu tốc tự động ngắt|Máy bay không người lái|Robot hút bụi thông minh",1,"Ấm siêu tốc ngắt bằng cơ chế nhiệt đơn giản, không cần AI."],
+["Tác động của AI đối với việc làm của con người là:","Thay thế hoàn toàn con người|Tạo việc làm mới và thay thế một số công việc hiện có|Chỉ tác động công việc đơn giản|Không có tác động đáng kể",1,"AI thay thế công việc lặp lại, đơn giản nhưng đồng thời tạo ra việc làm mới."],
+["Hệ thống AI của YouTube gợi ý video làm nhiệm vụ gì?","Hiển thị quảng cáo phù hợp|Đề xuất video dựa trên sở thích người dùng|Đề xuất chức năng mới|Đề xuất video có nhiều lượt xem",1,"Hệ thống gợi ý dựa trên sở thích, lịch sử xem của từng người."],
+["Tính năng nào KHÔNG phải của trợ lí ảo?","Tương tác bằng ngôn ngữ tự nhiên|Tự động cải thiện hiệu suất máy tính|Trả lời câu hỏi của người dùng|Điều khiển thiết bị điện tử trong nhà",1,"Trợ lí ảo không có nhiệm vụ tự cải thiện hiệu suất máy tính."],
+["Phần mềm nào là trợ lí ảo của Amazon?","Google Assistant|Alexa|Bixby|Siri",1,"Alexa là trợ lí ảo của Amazon."],
+["AI hỗ trợ chẩn đoán bệnh bằng cách nào?","Nhận diện giọng nói bác sĩ|Nhận diện bệnh lí qua hình ảnh y khoa|Phân tích giọng nói bệnh nhân|Quản lí thể dục bệnh nhân",1,"AI phân tích ảnh X-quang, CT, MRI để phát hiện bất thường."],
+["Nhận định nào SAI về ảnh hưởng của AI trong tương lai?","Tăng cường tự động hoá|Có thể thay thế con người ở một số lĩnh vực|Tạo nguy cơ về an ninh mạng và quyền riêng tư|AI sẽ luôn an toàn và có lợi cho con người",3,"AI cũng đặt ra cảnh báo về đạo đức, an ninh mạng, quyền riêng tư, việc làm."],
+["Phương thức nào KHÔNG dùng để kết nối máy tính với điện thoại?","Cáp USB|Bluetooth|Wifi|Cáp VGA",3,"VGA dùng truyền hình ảnh tới màn hình, không nối với điện thoại."]]},
+{n:"CĐ2 · Mạng máy tính",q:[
+["Thiết bị nào biến đổi dữ liệu số thành tín hiệu tương tự để truyền qua mạng và ngược lại?","Laptop|Modem|Switch|Access point",1,"Modem (điều chế – giải điều chế)."],
+["Thiết bị nào kết nối các thiết bị tạo thành mạng hình sao?","Laptop|Modem|Switch|Máy chủ",2,"Switch đóng vai trò trung tâm của mạng hình sao."],
+["Ngoài kết nối không dây, Access point còn có chức năng:","Mở rộng băng thông Internet|Điều chế|Giải điều chế|Định tuyến trong mạng không dây",3,"Access point có thể định tuyến trong mạng không dây và quản lí truy cập người dùng."],
+["Ngoài kết nối hình sao, Switch còn có chức năng:","Mở rộng băng thông của đường truyền|Biến đổi dữ liệu số thành tín hiệu tương tự|Biến đổi tương tự thành số|Truyền tín hiệu tương tự giữa các máy",0,"Switch có khả năng mở rộng băng thông (số bit truyền trên giây)."],
+["Phòng thực hành có 30 máy tính, muốn nối thành mạng LAN nên dùng:","Modem|Access point|Switch|Router",2,"Switch kết nối nhiều máy trong cùng mạng LAN bằng cáp."],
+["Điều gì đảm bảo máy tính và thiết bị mạng giao tiếp đúng cách?","Giao thức mạng|Giao tiếp mạng|Giao dịch mạng|Giao thông mạng",0,"Giao thức mạng là tập quy tắc về định dạng, truyền, nhận dữ liệu."],
+["Nhiệm vụ nào KHÔNG phải của giao thức TCP?","Thiết lập, duy trì, đóng kết nối|Định địa chỉ và định tuyến gói dữ liệu|Truyền tải đáng tin cậy, đúng thứ tự|Chia gói, kiểm tra toàn vẹn, truyền lại nếu cần",1,"Định địa chỉ và định tuyến là nhiệm vụ của giao thức IP."],
+["Đặc tính nào là nhược điểm của TCP/IP?","Không hỗ trợ đa phương tiện|Kiểm soát luồng kém|Không có khả năng mở rộng|Không có độ tin cậy",0,"TCP/IP không hiệu quả cho thời gian thực và không hỗ trợ đa phương tiện."],
+["Chức năng nào của hệ điều hành hỗ trợ người dùng trao đổi dữ liệu?","Kiểm soát thực thi ứng dụng|Quản lí bộ nhớ|Kiểm soát hiệu suất|Chức năng mạng",3,"Chức năng mạng giúp trao đổi dữ liệu, chia sẻ ổ đĩa, thư mục, máy in."],
+["Lựa chọn nào bật tính năng chia sẻ thư mục và tệp tin?","Turn on network discovery|Turn off network discovery|Turn on file and printer sharing|Turn off file and printer sharing",2,"“Turn on file and printer sharing” bật chia sẻ tệp và máy in."],
+["Chia sẻ ổ đĩa cho người khác chỉ để đọc, xem dữ liệu thì chọn quyền:","Full control|Change|Read|Cả ba quyền",2,"Read chỉ cho phép xem/đọc; Change cho sửa, ghi; Full control toàn quyền."],
+["Modem là thiết bị có khả năng nào?","Định tuyến dữ liệu từ gửi tới nhận|Chuyển đổi tín hiệu tương tự sang dữ liệu số và ngược lại|Quản lí truy cập người dùng|Chuyển tiếp dữ liệu giữa các mạng LAN",1,"Modem điều chế và giải điều chế tín hiệu."],
+["Bộ định tuyến là thiết bị nào?","Router|WAP|Modem|Switch",0,"Router chuyển tiếp dữ liệu giữa các mạng, nối mạng nội bộ với Internet."],
+["Nội dung nào KHÔNG phải giao thức hoạt động trên thiết bị gửi?","Đóng gói dữ liệu|Xác định địa chỉ IP|Giải nén dữ liệu|Truyền gói dữ liệu",2,"Giải nén là việc của thiết bị nhận."],
+["Nội dung nào hoạt động trên cả thiết bị gửi và nhận?","Đóng gói dữ liệu|Giải nén dữ liệu|Tiếp nhận gói dữ liệu|Kiểm tra lỗi và đảm bảo độ tin cậy",3,"Cả hai bên đều kiểm tra lỗi và đảm bảo độ tin cậy."],
+["Tại thiết bị gửi, sau khi đóng gói, xác định IP và MAC thì thực hiện:","Truyền gói ngay|Xác định đường đi tối ưu|Tiếp nhận gói từ thiết bị khác|Kiểm tra lỗi sau khi truyền",1,"Thứ tự: đóng gói → IP → MAC → đường đi tối ưu → truyền gói."],
+["Tại thiết bị gửi, bước ngay trước khi truyền gói dữ liệu đi là:","Đóng gói dữ liệu|Xác định IP, MAC|Xác định đường đi tối ưu|Kiểm tra lỗi",2,"Đường đi tối ưu được xác định rồi mới truyền."],
+["Đặc tính nào là ưu điểm của TCP/IP?","Đối phó với độ trễ|Khả năng kiểm soát luồng|Hỗ trợ đa phương tiện|Hiệu suất thời gian thực",1,"Kiểm soát luồng giảm nguy cơ quá tải mạng."],
+["Thẻ chức năng nào trong cửa sổ Properties cho phép thiết lập chia sẻ?","General|Tools|Hardware|Sharing",3,"Thẻ Sharing."],
+["Lựa chọn nào tắt chia sẻ bằng mật khẩu?","Turn on password protected sharing|Turn off password protected sharing|Turn on network discovery|Turn off network discovery",1,"Turn off password protected sharing."]]},
+{n:"CĐ3 · Đạo đức, pháp luật",q:[
+["Phương án nào KHÔNG phải nền tảng giao tiếp trong không gian mạng?","Messenger|Zoom|Google Meet|Gửi thư qua bưu điện",3,"Thư bưu điện không dùng phương tiện kĩ thuật số."],
+["Đặc điểm “thiếu bảo mật” khi giao tiếp trên mạng đề cập đến:","Phải chia sẻ sở thích, quan điểm nên không còn bảo mật|Chỉ an toàn nếu không mạo danh|Nguy cơ bị đánh cắp thông tin, xâm nhập dữ liệu, lộ thông tin cá nhân|Bảo mật thông tin thì tuyệt đối an toàn",2,"Thiếu bảo mật: đánh cắp thông tin, xâm nhập máy tính, lộ thông tin riêng tư."],
+["Bạn B giả làm người bản xứ để có nhiều người theo dõi. Đây là nhược điểm:","Mở rộng khả năng tương tác|Thiếu bảo mật|Thiếu tin cậy|Thiếu liên tục",2,"Thiếu trung thực nên thiếu tin cậy."],
+["Họp gấp cho số đông qua Zoom thể hiện ưu điểm:","Cải thiện kĩ năng giao tiếp|Phương tiện đa dạng|Giảm rào cản ban đầu|Không phụ thuộc không gian và thời gian",3,"Không cần di chuyển, họp mọi lúc mọi nơi."],
+["Vừa nhận nhiều tin nhắn vừa bị đường truyền kém khi học online là nhược điểm:","Thiếu bảo mật, thiếu liên tục|Thiếu tập trung, thiếu liên tục|Thiếu tập trung, thiếu bảo mật|Thiếu tin cậy, thiếu bảo mật",1,"Nhiều tin nhắn → thiếu tập trung; đường truyền kém → thiếu liên tục."],
+["Hành vi nào KHÔNG nên khi ứng xử trên mạng?","Tôn trọng pháp luật, tôn trọng người đối diện|Dùng ngôn từ lai căng, thô tục theo xu hướng giới trẻ|Lan tỏa hình ảnh đẹp về hoạt động tình nguyện|Chỉ đăng thông tin rõ nguồn gốc, đã kiểm chứng",1,"Không sử dụng từ ngữ lai căng, tục tĩu hay bạo lực."],
+["Mô tả đúng về giao tiếp trong không gian mạng:","Dùng công cụ công nghệ số|Giao tiếp trực tiếp trong không gian có thiết bị số|Dùng phương tiện kĩ thuật số để liên lạc thông qua nền tảng số|Giao tiếp trực tiếp giữa người với người trên mạng",2,"Theo đề cương: dùng phương tiện kĩ thuật số, qua nền tảng số (email, mạng xã hội, chat)."],
+["Dịch vụ nào KHÔNG phải giao tiếp trong không gian mạng?","Thư điện tử|Facebook|Dịch vụ bác sĩ gia đình tại nhà|Nhắn tin Zalo",2,"Bác sĩ gia đình chăm sóc trực tiếp tại nhà."],
+["Ưu điểm đúng của giao tiếp trong không gian mạng:","Hỗ trợ người khuyết tật dễ giao tiếp|Dễ kiểm soát nguồn thông tin|Không bị ảnh hưởng sự cố đường truyền|Độ tin cậy cao",0,"Các phương án còn lại là nhược điểm hoặc sai."],
+["Nhược điểm đúng của giao tiếp trong không gian mạng:","Không bị giới hạn thời gian, địa điểm|Khó xác định đối tượng giao tiếp chính xác|Tiết kiệm chi phí, thời gian|Mở rộng khả năng tương tác",1,"Thiếu tin cậy: khó xác minh danh tính."],
+["Nguyên tắc ứng xử trên không gian mạng:","Lịch sự, luôn làm theo yêu cầu người khác|Lịch sự, tôn trọng người khác và tuân thủ pháp luật|Tích cực chia sẻ mọi thông tin|Chia sẻ rộng rãi mọi thông tin cá nhân",1,"Tôn trọng người khác và tuân thủ pháp luật."],
+["Văn bản theo QĐ 874/QĐ-BTTTT (6/2021) liên quan trao đổi thông tin trên mạng:","Bộ luật về An ninh mạng|Bộ quy tắc ứng xử trên mạng xã hội|Bộ quy tắc giao tiếp trên không gian mạng|Bộ quy tắc bảo đảm an ninh mạng",1,"Bộ quy tắc ứng xử trên mạng xã hội."]]},
+{n:"CĐ4 · HTML & CSS",q:[
+["HTML là viết tắt của:","HyperText Markup Language|HypertLink Markup Language|Home Tool Markup Language|HypertLink Mix Language",0,"HTML = HyperText Markup Language – ngôn ngữ đánh dấu siêu văn bản."],
+["Phần tử <!-- Nội dung --> có ý nghĩa:","Khai báo kiểu tệp HTML|Phần tử bắt buộc|Chú thích, không hiển thị khi duyệt web|Nội dung chỉ một dòng",2,"Đây là phần tử chú thích."],
+["Thẻ chỉ có thẻ mở, không có thẻ đóng:","<img>|<iframe>|<video>|<audio>",0,"<img> (cũng như <br>, <hr>) không có thẻ đóng."],
+["Thuộc tính bắt buộc khi chèn video:","controls|autoplay|loop|src",3,"src là đường dẫn tới tệp, bắt buộc."],
+["Kiểu <input> tạo nút tròn, chỉ chọn một phương án:","text|radio|checkbox|button",1,"radio chọn một; checkbox chọn nhiều."],
+["Kiểu <input> tạo hộp kiểm, chọn nhiều phương án:","text|radio|checkbox|button",2,"checkbox cho chọn nhiều (name giống nhau, id khác nhau)."],
+["Kiểu <input> che dữ liệu khi nhập:","radio|password|file|email",1,"type=\"password\" che ký tự nhập."],
+["CSS là viết tắt của:","Creative Style Sheets|Computer Style Sheets|Cascading Style Sheets|Colorful Style Sheets",2,"CSS = Cascading Style Sheets."],
+["Dòng liên kết tệp CSS đặt ở:","trong <body>|trong <footer>|trong <header>|trong <head>",3,"Thẻ <link> đặt trong cặp <head></head>."],
+["Thuộc tính đổi màu nền của phần tử:","color|background-color|font-color|text-color",1,"background-color đổi màu nền; color đổi màu chữ."],
+["Thuộc tính đổi màu chữ của phần tử:","color|background-color|font-color|text-color",0,"color đổi màu chữ."],
+["Khai báo margin đúng cú pháp:","margin: 10px 20px 30px 40px;|margin = 10px 20px 30px 40px;|margin: 10px, 20px, 30px, 40px;|10px 20px 30px 40px: margin;",0,"Các giá trị cách nhau bằng dấu cách, thứ tự: trên, phải, dưới, trái."],
+["Vùng chọn dùng cho các phần tử thuộc lớp “lien-ket”:","*lien-ket|lien-ket|#lien-ket|.lien-ket",3,".tên-lớp chọn theo class; #tên chọn theo id."],
+["Vùng chọn dùng định kiểu cho MỘT phần tử duy nhất:","class|id|tag|element",1,"id dùng cho một phần tử xác định."],
+["Thuộc tính bo tròn góc:","border[round]: 30px|corner-effect: round|border-radius: 30px|alpha-effect: round-corner",2,"border-radius bo tròn góc."],
+["Thuộc tính display:none; có tác dụng:","Làm mờ phần tử|Làm phần tử trong suốt|Không hiển thị phần tử trên trình duyệt|Hiển thị chuẩn",2,"display:none ẩn hẳn phần tử, không chiếm chỗ."],
+["Canh giữa đối tượng theo chiều ngang trình duyệt:","site-align: center;|margin: center;|margin: auto 0;|margin: 0 auto;",3,"margin: 0 auto; đặt lề trái–phải tự động."],
+["Mô tả đúng về HTML:","Ngôn ngữ lập trình|Ngôn ngữ soạn thảo văn bản|Bộ quy tắc trình bày cấu trúc, nội dung, hình thức trang web|Ngôn ngữ liên kết dữ liệu",2,"HTML là bộ quy tắc thiết lập cấu trúc, nội dung và hình thức trang web."],
+["Phần tử <title> nằm trong phần tử nào?","<!DOCTYPE html>|<head>|<body>|<p>",1,"<title> nằm trong <head>."],
+["Thẻ nào dùng định dạng chữ in nghiêng?","<b> và <i>|<em> và <strong>|<em> và <i>|<u> và <i>",2,"<em>, <i> in nghiêng; <strong>, <b> in đậm."],
+["Thẻ <strong> có ý nghĩa:","In nghiêng|Gạch chân|Bóng đổ|In đậm",3,"<strong> in đậm."],
+["Thẻ nào tạo liên kết trong trang web?","<link>|<a>|<form>|<input>",1,"<a href=...> tạo siêu liên kết."],
+["Dùng cặp thẻ nào khai báo danh sách có thứ tự?","<ol> và <li>|<ul> và <li>|<table> và <li>|Chỉ <li>",0,"<ol> có thứ tự, <ul> không thứ tự, <li> là từng mục."],
+["Thẻ nào khai báo hàng của bảng?","<tr>|<table>|<td>|<th>",0,"<tr> hàng, <th> ô tiêu đề, <td> ô nội dung."],
+["Thẻ nhúng trang web khác vào trang hiện thời:","<a>|<link>|<iframe>|<form>",2,"<iframe src=...>."],
+["Thuộc tính của <img> chứa đường dẫn tới ảnh:","img|alt|src|title",2,"src là đường dẫn; alt là văn bản thay thế."],
+["Để tạo biểu mẫu cần dùng thẻ:","<a>|<head>|<form>|<iframe>",2,"<form action=... method=...>."],
+["Thẻ hiển thị vùng nhập văn bản nhiều dòng:","<label>|<input>|<textarea>|<text>",2,"<textarea rows cols>."],
+["Cú pháp ghi chú trong tệp CSS:","/* ghi chú */|// ghi chú //|// ghi chú|<!-- ghi chú -->",0,"CSS dùng /* ... */; <!-- --> là của HTML."],
+["Thuộc tính đổi phông chữ:","font-family|font-color|text-font|font-size",0,"font-family đổi phông; font-size đổi cỡ chữ."],
+["Thuộc tính đổi kích thước phông chữ:","font-family|font-color|text-font|font-size",3,"font-size."],
+["Thuộc tính thêm đường viền cho phần tử:","margin|border|padding|outline",1,"border; margin là lề ngoài, padding là vùng đệm."],
+["Thuộc tính đổi màu đường viền:","border-style|border-width|border-color|border",2,"border-color; border-width là độ dày, border-style là kiểu nét."],
+["Đặt màu nền đen cho phần tử, khai báo đúng:","background-color = #000000;|background: color(#000000);|background-color: #000000;|color: background(#000000);",2,"Cú pháp CSS: thuộc-tính: giá-trị;"],
+["Đặt chữ in đậm, khai báo đúng:","bold: font-weight;|font: weight(bold);|weight: font(bold);|font-weight: bold;",3,"font-weight: bold;"],
+["Bỏ gạch chân của liên kết:","a {decoration:no underline}|a {text-decoration:no underline}|a {underline:none}|a {text-decoration:none}",3,"text-decoration: none;"],
+["Viết hoa chữ cái đầu mỗi từ trong h1:","h1 { text-transform:capitalize; }|h1 { text-decoration:none; }|h1 { underline:none; }|h1 { text-case:title; }",0,"text-transform: capitalize;"],
+["Phần tử có margin: 10px; thì trình duyệt:","Chọn ngẫu nhiên 1 hướng|Chỉ đặt hướng trên|Đặt 10px cho cả 4 hướng|Bỏ qua vì thiếu",2,"1 giá trị áp dụng cho cả 4 hướng."],
+["margin: 10px 20px; nghĩa là:","2 hướng ngẫu nhiên|Trên–dưới 10px, trái–phải 20px|Trái–phải 10px, trên–dưới 20px|Bỏ qua vì thiếu",1,"2 giá trị: trên–dưới, rồi trái–phải."],
+["margin: 10px 20px 30px 40px; theo thứ tự:","left, right, top, bottom|top, right, bottom, left|top, bottom, left, right|top, left, bottom, right",1,"Theo chiều kim đồng hồ: trên, phải, dưới, trái."],
+["Với box-sizing: border-box; thì width, height:","Đã gồm border và padding|Chưa gồm border và padding|Chỉ gồm khi position: absolute|Chỉ gồm khi position: relative",0,"border-box tính cả border và padding; content-box thì không."],
+["Khai báo danh sách có kí hiệu hình vuông:","ul { list: square; }|ul { list -type: square; }|ul { style-type: square; }|ul { list-style-type: square; }",3,"list-style-type: square;"],
+["Đổ bóng màu xám cho văn bản:","font: shadowed 5px 5px 5px grey;|font-shadow: 5px 5px 5px grey;|text-shadow: 5px 5px 5px grey;|shadow: text 5px 5px 5px grey;",2,"text-shadow cho văn bản; box-shadow cho cả khối."],
+["Vùng chọn định kiểu các phần tử cùng loại:","class|id|tag|element",2,"Tên thẻ (tag) chọn các phần tử cùng loại."],
+["Số id có thể gán cho một phần tử:","Không giới hạn|Chỉ 1|2 id|Tối đa 3 id",1,"Mỗi phần tử chỉ có 1 id; class thì gán được nhiều."],
+["Trạng thái khi di chuyển chuột đến đối tượng:","hover|active|focus|visited",0,":hover là lướt chuột qua."],
+["Định kiểu nền #e5e5e5 cho hàng chẵn bảng lớp my-table:",".my-table tr:nth-child(even) { background-color: #e5e5e5; }|.my-table tr:nth-child(odd) { background-color: #e5e5e5; }|.my-table tr:even-child { ... }|.my-table tr:odd-child { ... }",0,"tr:nth-child(even) là hàng chẵn."],
+["Thuộc tính căn lề văn bản:","align-text|text-align|text-margin|margin-text",1,"text-align."],
+["Đơn vị nào KHÔNG dùng trong CSS?","px|em|cm|doc",3,"doc không phải đơn vị CSS."],
+["Nhập sai thuộc tính CSS, trình duyệt sẽ:","Tự sửa lỗi|Bỏ qua thuộc tính đó|Báo lỗi và hướng dẫn sửa|Không hiển thị trang",1,"Trình duyệt bỏ qua khai báo sai."],
+["Thẻ nào KHÔNG cùng loại với các thẻ khác?","<br>|<hr>|<img>|<b>",3,"<br>, <hr>, <img> chỉ có thẻ mở; <b> có cả thẻ đóng."],
+["Thẻ <head></head> KHÔNG có đặc điểm nào?","Có cả thẻ đóng và mở|Khai báo phần mở đầu trang|Thường chứa <title>|Nằm trong <body>",3,"<head> và <body> là hai phần tử ngang hàng trong <html>."],
+["Thuộc tính của phần tử HTML KHÔNG có đặc điểm nào?","Nằm trong thẻ mở|Mỗi phần tử bắt buộc có 1 thuộc tính|Có thể có một hoặc nhiều|Có phần tử không có thuộc tính",1,"Thuộc tính là tuỳ chọn, không bắt buộc."],
+["Trong <title><b>Đây là tiêu đề</b></title>, thẻ <b> có ý nghĩa:","Chữ đậm|Chữ nghiêng|Chữ gạch chân|Bóng đổ",0,"<b> in đậm."],
+["Phương án KHÔNG đúng về thuộc tính target của <a>:","Không bắt buộc|Không có thì mở ở cửa sổ hiện tại|_blank mở ở cửa sổ hiện tại|_self mở ở cửa sổ hiện tại",2,"_blank mở cửa sổ mới; _self mở cửa sổ hiện tại."],
+["index.html và info.html cùng thư mục. Liên kết đúng:","href=\"thiết kế web/info.html\"|href=\"info.html\"|href=\"/thiết kế web/info.html\"|href=\"/info.html\"",1,"Cùng thư mục chỉ cần tên tệp (đường dẫn tương đối)."],
+["index.html và thư mục 'thiết kế web' cùng cấp. Liên kết tới info.html trong thư mục đó:","href=\"thiết kế web/info.html\"|href=\"info.html\"|href=\"/thiết kế web/info.html\"|href=\"/info.html\"",0,"Đường dẫn tương đối: thư-mục/tệp."],
+["<ol type=\"a\">...</ol> cho kết quả:","Có thứ tự, bắt đầu từ A|Có thứ tự, bắt đầu từ a|Không thứ tự, bắt đầu a|Không tạo được vì thiếu start",1,"type=\"a\" đánh a, b, c..."],
+["Danh sách không thứ tự, không khai báo style, bắt đầu bằng:","Số 1|Dấu •|Dấu -|Chữ a",1,"Mặc định là chấm tròn (disc)."],
+["Nêu đúng ý nghĩa của <table border=\"1\" width=\"100%\" bgcolor=\"gray\">:","Viền dày 100%, nền xám|Viền 1px, rộng 100px, nền xám|Viền nét đứt, rộng bằng trình duyệt|Viền 1px, rộng bằng trình duyệt, nền xám",3,"width=\"100%\" là toàn bộ chiều rộng trình duyệt."],
+["Bảng có 1 hàng <th> 2 ô và 2 hàng <td> 2 ô có:","2 hàng, 3 cột|3 hàng, 2 cột|3 hàng, 3 cột|2 hàng, 2 cột",1,"Mỗi <tr> là một hàng: 3 hàng, mỗi hàng 2 ô."],
+["<iframe src=\"...\" width=\"80%\" height=\"500\"> có ý nghĩa:","Nhúng trang chứa lệnh vào trang kia|Cao 500px, rộng 80% chiều cao|Rộng 80px, cao 500px|Rộng 80% cửa sổ, cao 500px",3,"% tính theo cửa sổ hiển thị, không có đơn vị là px."],
+["Nhúng trang với khung rộng và cao 50% cửa sổ:","width=\"50\" height=\"50\"|width=\"50%\" height=\"50%\"|width= height=\"50\"|width=\"50px\"",1,"Thêm dấu % để tính theo cửa sổ."],
+["Nội dung KHÔNG đúng về thuộc tính controls của <video>:","Không bắt buộc|Bắt buộc|Hiển thị nút điều khiển|Không cần gán giá trị",1,"controls là thuộc tính tuỳ chọn."],
+["Trong <form action=... method=...>, thành phần bắt buộc:","action|Nội dung biểu mẫu|method|Không có thành phần nào bắt buộc",3,"Không có action: gửi về trang hiện tại; không có method: mặc định GET."],
+["Dòng liên kết tệp HTML với tệp CSS:","<style src=\"mystyle.css\">|<stylesheet>mystyle.css</stylesheet>|<link rel=\"stylesheet\" type=\"text/css\" href=\"mystyle.css\">|<link>mystyle.css</link>",2,"Dùng <link> trong <head> với rel và href."],
+["Thuộc tính đổi độ dày đường viền:","border-style|border-width|border-color|border",1,"border-width."],
+["Thuộc tính đổi kích thước phần tử:","width và height|size|scale|dimension",0,"width, height."],
+["Ý nghĩa của text-indent:","Chiều cao dòng|Khoảng cách thụt đầu dòng|Chế độ canh văn bản|Chiều rộng dòng",1,"text-indent thụt đầu dòng."],
+["Đặt phông chữ Arial, khai báo đúng:","font-family: Arial;|font:family(Arial);|font = Arial;|family-font: Arial;",0,"font-family: Arial;"],
+["Đặt cỡ chữ 16px, khai báo đúng:","font: size(16px);|font-size: 16px;|16px: font-size;|size:font(16px);",1,"font-size: 16px;"],
+["Đặt độ rộng đường viền 2px:","border-width: 2px;|border: width(2px);|2px: border-width;|border = 2px;",0,"border-width: 2px;"],
+["margin: 10px 20px 30px; nghĩa là:","Trái 0px|Trái 10px|Trái 20px|Bỏ qua",2,"3 giá trị: trên, trái–phải, dưới → trái = phải = 20px."],
+["padding: 10px 20px; nghĩa là:","Trên 10, phải 20, còn lại 0|Dưới và trái kế thừa|Trên–dưới 10px, trái–phải 20px|Bỏ qua",2,"2 giá trị: trên–dưới, trái–phải."],
+["padding: 10px 20px 30px; nghĩa là:","Trái 0px|Trên 10, phải–trái 20, dưới 30|Trái kế thừa|Bỏ qua",1,"3 giá trị: trên, phải–trái, dưới."],
+["Để định kiểu cho tất cả thẻ <a>, vùng chọn:","*a|a|#a|.a",1,"Chọn theo tên thẻ, viết tên thẻ."],
+["Để định kiểu phần tử có id lien-ket-noi-bat:","*lien-ket-noi-bat|lien-ket-noi-bat|#lien-ket-noi-bat|.lien-ket-noi-bat",2,"#id."],
+["Nhiều quy tắc xung đột, trình duyệt ưu tiên:","Theo id|Theo lớp|CSS chèn trực tiếp vào thẻ|Theo thẻ",2,"Thứ tự ưu tiên: chèn trực tiếp > id > lớp > thẻ."],
+["Chọn phần tử có id myId và lớp myClass:","#myId.myClass|.myId#myClass|#myId #myClass|.myId .myClass",0,"Viết liền, không dấu cách."],
+["Chọn các thẻ p có lớp myClass:",".myClass p|p.myClass|p .myClass|p#myClass",1,"p.myClass"],
+["Chọn các thẻ p có id myId:","#myId p|p .myId|p#myId|p.myId",2,"p#myId"],
+["Chọn các thẻ p là con của phần tử có id myId:","#myId p|p #myId|#myId > p|p > #myId",2,"cha > con. (Cả #myId p cũng chọn cháu.)"],
+["Liên kết trắng, nền đỏ khi người dùng nháy chuột vào:","a:hover|a:active|a:focus|a:visited",1,":active là trạng thái đang được nháy chuột."],
+["Làm nổi hộp văn bản đang chọn bằng đường viền:","input[type=\"text\"]:focus { outline: 2px solid #007bff; }|input[type=\"text\"]:hover { border: ... }|input[type=\"text\"]:hover { outline: ... }|input[type=\"text\"]:active { ... }",0,"Đang được chọn là :focus; outline không làm thay đổi kích thước."],
+["Tạo id TopBar rộng 750px, cao 30px, chữ đỏ:","#TopBar { height: 30px; width: 750px; color: red; }|.TopBar { ... colour: red; }|#TopBar { ... text: red; }|.TopBar { ... color: red; }",0,"id dùng #; màu chữ dùng color."]]}];
+let ti=0,qi=0,m=0,A=T.map(t=>({})),B=T.map(t=>({}));
+const $=i=>document.getElementById(i),L="ABCD";
+function go(a,b){ti=a;m=b;qi=0;$("nav").classList.remove("open");draw()}
+function nav(){const bt=(c,f,x)=>`<button class="${c?'on':''}" onclick="${f}">${x}</button>`;
+$("nav").innerHTML=`<button class="mb" onclick="$('nav').classList.toggle('open')">☰ ${T[ti].n} · ${m?"Đúng/Sai":"Trắc nghiệm"} ▾</button><div class="mn"><div class="lb">Chủ đề</div>`+T.map((t,i)=>bt(i==ti,`go(${i},m)`,t.n)).join("")+`<div class="lb">Dạng câu hỏi</div>`+["Trắc nghiệm","Đúng/Sai"].map((x,i)=>bt(i==m,`go(ti,${i})`,x)).join("")+`</div>`}
+function draw(){nav();if(m)return drawTF();const t=T[ti],a=A[ti];$("t").textContent=t.n;
+const done=Object.keys(a).length,right=Object.entries(a).filter(([k,v])=>v==t.q[k][2]).length;
+$("sc").textContent=`Đã làm ${done}/${t.q.length} · Đúng ${right}`;
+$("gr").innerHTML=t.q.map((q,i)=>`<button class="${i==qi?'cur ':''}${i in a?(a[i]==q[2]?'ok':'no'):''}" onclick="qi=${i};draw()">${i+1}</button>`).join("");
+const q=t.q[qi],o=q[1].split("|"),ans=a[qi],has=qi in a;
+$("cd").innerHTML=`<p class="q">Câu ${qi+1}. ${q[0].replace(/</g,"&lt;")}</p>`+o.map((x,i)=>`<button class="opt ${has?(i==q[2]?'ok':i==ans?'no':''):''}" ${has?'disabled':''} onclick="pick(${i})">${L[i]}. ${x.replace(/</g,"&lt;")}</button>`).join("")+(has?`<div class="ex"><b>${ans==q[2]?"✅ Chính xác!":"❌ Chưa đúng."}</b> Đáp án đúng: <b>${L[q[2]]}</b>.<br>${q[3]}</div>`:"");
+$("pv").disabled=qi==0;$("nx").disabled=qi==t.q.length-1}
+function pick(i){A[ti][qi]=i;draw()}
+const TF=[[
+["Google tích hợp AI trong y tế, ví dụ dự án ARDA tầm soát bệnh võng mạc tiểu đường từ xa.",["Gmail là dịch vụ thư điện tử miễn phí do Google phát triển.","Có thể lưu trữ dữ liệu trên đám mây không giới hạn.","Máy tìm kiếm Google chẩn đoán được tất cả bệnh tật của con người.","Google hỗ trợ bác sĩ tầm soát bệnh võng mạc tiểu đường qua camera điện thoại."],"ĐSSĐ"],
+["Năm 1997, Deep Blue của IBM đánh bại Garry Kasparov.",["Deep Blue chỉ hoạt động được vào ban ngày.","Cách đánh cờ của người và máy tính là giống nhau.","Chứng minh máy móc làm được nhiệm vụ đòi hỏi trí thông minh cao.","Là cuộc đụng độ giữa trực giác con người và tốc độ tính toán của máy."],"SSĐĐ"],
+["Ảnh hưởng của AI đối với ngành giáo dục.",["AI có thể tự động đánh giá kết quả học tập.","AI thay thế hoàn toàn vai trò của giáo viên.","AI có thể cá nhân hoá việc học cho mỗi học sinh.","AI tự động giải quyết mọi vấn đề trong giáo dục."],"ĐSĐS"],
+["Ứng dụng của AI đối với ngành tài chính, ngân hàng.",["AI tự động hoá quy trình thủ công, nâng cao trải nghiệm khách hàng.","AI phân tích, dự báo xu thế thị trường.","AI không có khả năng phát hiện gian lận giao dịch.","AI thay thế hoàn toàn con người trong ra quyết định giao dịch."],"ĐĐSS"],
+["Ứng dụng của AI đối với ngành y tế.",["Hỗ trợ giao tiếp và thấu hiểu cảm xúc bệnh nhân.","Đưa ra chẩn đoán y tế cuối cùng.","Phân tích hình ảnh y tế và đưa ra chẩn đoán bệnh.","Hỗ trợ bác sĩ thực hiện các thủ thuật phức tạp."],"SSĐĐ"],
+["Ảnh hưởng của AI đối với con người.",["Con người có thể bị mất việc làm bởi AI.","AI luôn công bằng khi dùng trong hệ thống tuyển dụng.","Không thể dùng AI để giả mạo giọng nói, khuôn mặt.","AI có thể thu thập thông tin riêng tư của con người."],"ĐSSĐ"]],[
+["Sơ đồ mạng của trường: Modem, Switch nối phòng thực hành, Access point.",["Phải thay Switch bằng một Modem khác để vừa nối cáp vừa nối thiết bị di động.","Máy tính để bàn không kết nối được Modem và Access point vì không có cổng cắm cáp.","Có thể thêm máy tính vào phòng thực hành do Switch còn cổng chưa dùng.","Dùng thêm Access point để mở rộng mạng không dây cho thiết bị không dây."],"SSĐĐ"],
+["Tạo thư mục Lịch công tác tuần, cho nhóm GIÁO VIÊN chỉ xem.",["Phân quyền Full Control cho nhóm Everyone.","Phân quyền Read cho nhóm Everyone.","Phân quyền Read cho nhóm GIÁO VIÊN.","Phân quyền Change cho nhóm GIÁO VIÊN."],"SSĐS"],
+["Tạo thư mục KẾ HOẠCH cho nhóm GIÁO VIÊN sao chép tệp vào.",["Phân quyền Full Control cho nhóm GIÁO VIÊN.","Phân quyền Change cho nhóm GIÁO VIÊN.","Phân quyền Read cho nhóm GIÁO VIÊN.","Phân quyền Change cho nhóm Everyone."],"SĐSS"],
+["Mở Properties của máy in nhưng không tích được Share this printer.",["Máy tính cài máy in này không có tính năng chia sẻ máy in.","Máy tính này chưa bật chế độ cho phép chia sẻ máy in.","Vào Network and Sharing Center, chọn Turn on file and printer sharing.","Vào Network and Sharing Center, chọn Turn on network discovery để bật chia sẻ máy in."],"SĐĐS"],
+["Đi công tác, không có cáp mạng và wifi, có laptop và điện thoại dùng 4G, cần gửi gấp tệp qua email.",["Bật Mobile hotspot trên điện thoại để chia sẻ kết nối cho laptop.","Đi tìm quán cafe gần nhất để có wifi.","Dùng chức năng mạng của hệ điều hành laptop để chia sẻ tệp tin.","Mở laptop, chọn Settings, Network & Internet, Mobile hotspot để tạo điểm phát sóng."],"ĐSSS"],
+["Hệ thống mạng phòng thực hành của trường.",["Thiết bị bắt buộc để kết nối thiết bị với Internet là modem.","Hệ thống dùng thiết bị có chức năng chia sẻ mạng wifi.","Các máy trong phòng thực hành kết nối với nhau qua bộ chuyển mạch.","Hệ thống phòng thực hành có thể khai thác để thi Olympic qua Internet."],"ĐĐĐS"],
+["Chỉnh sửa hệ thống mạng của trường do mở rộng quy mô.",["Dùng thêm Access point ở nơi có nhiều người dùng thiết bị di động.","Lắp thêm một Modem nối với Modem hiện có để tạo mạng tương tự.","Thay Modem đang dùng bằng Router hiện đại, tốc độ cao.","Đăng kí nâng cấp gói cước vì có thêm nhiều thiết bị truy cập mạng."],"ĐSSĐ"]],[
+["Tính nhân văn trong giao tiếp trên không gian mạng (1).",["Bạn A học online luôn nghiêm túc, ăn mặc lịch sự, tích cực xây dựng bài.","Trào lưu khoe mặt mộc đề cao vẻ đẹp tự nhiên thu hút nhiều người tham gia.","Bạn A đọc kĩ bài viết, phản hồi lịch sự trên tinh thần tôn trọng quan điểm khác.","Bạn B phản hồi gay gắt, phủ nhận người có quan điểm khác để bảo vệ ý kiến tới cùng."],"ĐĐĐS"],
+["Tính nhân văn trong giao tiếp trên không gian mạng (2).",["Kiểm soát thông tin cá nhân, thiết lập chế độ người xem phù hợp.","Chỉ chia sẻ thông tin đã kiểm chứng, được phép và không vi phạm pháp luật.","Chia sẻ trên YouTube các vụ việc giật gân, tai nạn nghiêm trọng, dự đoán thảm hoạ.","Thực hành Bộ quy tắc ứng xử trên mạng xã hội do Bộ TT&TT ban hành 6/2021."],"ĐĐSĐ"]],[
+["Tệp HTML có <html>, <head> chứa <title>Trang web thử nghiệm</title>, <body> chứa <h1>Hello</h1> và <p><i>…</i></p>.",["Phần tử <html> chứa phần tử <head> và <body>.","Phần tử <body> chứa một phần tử con.","Tiêu đề trang web hiển thị trên trình duyệt là Hello.","Chỉ có một phần tử có thuộc tính."],"ĐSSS"],
+["Các thẻ <h1> … <h6> khi không khai báo thuộc tính.",["Tiêu đề <h1> có cỡ chữ lớn nhất.","Các tiêu đề có cùng phông chữ.","Tiêu đề <h3> nhỏ hơn <h2> và lớn hơn <h4>.","Các tiêu đề đều được in đậm."],"ĐĐĐĐ"],
+["Câu lệnh <a href=https://www.google.com>liên kết tới trang web</a> trong index.html.",["Câu lệnh tạo liên kết tới https://www.google.com.","Khi nháy chuột, trang Google mở trên một cửa sổ mới.","Trang Google nằm cùng máy chủ với tệp HTML hiện tại.","Thuộc tính href là thuộc tính bắt buộc."],"ĐSSĐ"],
+["Danh sách hiển thị 1., 2., 3., 4. Nội dung.",["Đây là danh sách có thứ tự.","Dùng thẻ <ul> để khai báo danh sách này.","Cần 4 thẻ <li> để khai báo 4 mục.","Thêm type=a vào thẻ khai báo thì danh sách đánh a, b, c, d."],"ĐSĐĐ"],
+["Đoạn lệnh <ul style=list-style-type:square> gồm 4 thẻ <li>.",["Kí tự đầu mỗi dòng là dấu ▪.","Danh sách có 4 mục.","Thay ul bằng ol ở mọi vị trí (giữ nguyên nội dung khác) sẽ tạo danh sách số thứ tự.","Thêm start=1 vào thẻ <ul> sẽ hiển thị số thứ tự từ 1."],"ĐĐSS"],
+["Lệnh <a href='/tailieu/baihoc.pdf'>Liên kết</a> đặt trong tệp index.html.",["Liên kết từ index.html đến baihoc.pdf, hai tệp cùng nằm trong thư mục tailieu.","Khi nhấn vào liên kết, baihoc.pdf mở trên chính cửa sổ trình duyệt hiện tại.","Liên kết từ index.html đến tệp tailieu.","Tệp index.html không thuộc thư mục tailieu."],"SSSĐ"],
+["Lệnh <iframe src='trangwebmau.html' width='80%' height='500'></iframe> đặt trong index.html.",["Thẻ <iframe> dùng để nhúng một trang web vào trang web hiện thời.","Tài nguyên được nhúng là tệp trangwebmau.html nằm cùng thư mục với index.html.","Khung có chiều cao 500px, chiều rộng bằng 80% chiều cao.","Có thể nhúng trang web khác máy chủ như Google vào trang web."],"ĐĐSĐ"],
+["Lệnh <img src='image/conmeo.jpg' width='100' height='120' alt='ảnh con mèo'>.",["Phần tử <img> không có thẻ đóng.","Nếu ảnh bị lỗi, trình duyệt hiện dòng thông báo 'ảnh lỗi' thay thế.","Kích thước ảnh hiển thị là rộng 100px và cao 120px.","Ảnh conmeo.jpg nằm trong thư mục image, cùng cấp với thư mục chứa tệp HTML hiện tại."],"ĐSĐĐ"],
+["Lệnh <video src='movie.mp4' width='150' autoplay>Trình duyệt không hỗ trợ định dạng file</video>.",["Câu lệnh chèn video movie.mp4 vào trang web.","Video được tự động phát khi người dùng truy cập.","Nếu tăng chiều rộng lên 150px thì chiều dài cũng tăng thêm 30px.","Nếu hiển thị video bị lỗi, trình duyệt hiện nội dung 'Trình duyệt không hỗ trợ định dạng file'."],"ĐĐSĐ"],
+["Lệnh <audio src='sound.mp3' controls autoplay></audio>.",["Có thể thêm thuộc tính width và height để chỉnh kích thước audio.","Audio được phát ngay khi hiển thị trên trình duyệt.","Trình duyệt hiển thị các nút điều khiển phát audio.","Trình duyệt không tự động phát lặp lại âm thanh."],"SĐĐĐ"],
+["Biểu mẫu chọn định hướng môn Tin học dùng hai <input type='radio' name='dinhhuong'> với <label for=...>, trong cặp <p>.",["Bấm vào cụm từ Khoa học máy tính thì nút chọn tương ứng được chọn.","Có thể thay cặp thẻ <p> bằng <h1> để làm nổi bật văn bản.","Có thể chọn cả hai lựa chọn Khoa học máy tính và Tin học ứng dụng.","Bấm vào nút Submit sẽ gửi dữ liệu từ biểu mẫu tới trang web kết quả."],"ĐĐSS"],
+["Biểu mẫu thu thập ý kiến đóng góp có một khung nhập nhiều dòng và nút Gửi.",["Phần tử tạo khung nhập ý kiến phản hồi là textarea.","Nên đổi kiểu của phần tử nhập ý kiến thành checkbox.","Người dùng chỉ được nhập ý kiến trên một dòng.","Khi nhập nội dung vào khung, văn bản bị che đi để bảo mật."],"ĐSSS"],
+["Biểu mẫu đăng kí CLB: họ tên, giới tính (Nam/Nữ), chọn CLB (Bóng đá, Vovinam), lí do tham gia.",["Kiểu dữ liệu của họ tên là textarea.","Kiểu dữ liệu của giới tính là checkbox.","Khung nhập lí do tham gia CLB cho phép nhập nhiều dòng và cột.","Kiểu dữ liệu của nội dung chọn câu lạc bộ là checkbox."],"SSĐĐ"],
+["Cũng biểu mẫu đăng kí CLB ở trên (giới tính radio, câu lạc bộ checkbox).",["Chỉ có thể chọn một trong hai giá trị giới tính là Nam hoặc Nữ.","Chỉ có thể chọn một trong hai CLB là Bóng đá hoặc Vovinam.","id của hai phần tử checkbox phải khác nhau, name giống nhau.","id của hai phần tử radio khác nhau."],"ĐSĐĐ"],
+["Biểu mẫu đăng nhập: <input type='text' id='hoten' name='hoten'> và <input type='password' id='pass' name='pass'>, <form> không có thuộc tính.",["Kiểu dữ liệu của họ tên là text.","Khi nhập dữ liệu vào ô password thì dữ liệu bị che.","Phương thức gửi dữ liệu là phương thức POST.","Địa chỉ nhận dữ liệu là trang web hiện thời."],"ĐĐSĐ"],
+["Bạn C khai báo: bar { background-color: #0ac; padding: 20px; margin: 10px 0px; }",["Bạn C khai báo sai mã màu nền, trình duyệt bỏ qua thuộc tính màu nền.","Khoảng cách giữa các phần tử lớp bar là 20px.","Khoảng cách từ viền đến nội dung bên trong là 20px theo cả bốn chiều.","Khoảng cách giữa các phần tử lớp bar theo chiều dọc là 20px."],"SSĐĐ"],
+["Bạn D viết: input[type='text'] { width: 300px; padding: 10px; border: 1px solid #ccc; box-sizing: border-box; }",["Vùng chọn trên định kiểu cho phần tử nhập liệu là hộp văn bản.","Vùng đệm giữa viền và nội dung bên trong là 10px cho cả 4 chiều.","Đường viền của hộp văn bản dày 1px, nét liên tục, màu đen.","Chiều rộng của phần nội dung bên trong hộp văn bản là 300px."],"ĐĐSS"],
+["Bạn H tạo biểu mẫu đăng kí: form { width: 300px; margin: 0 auto; }, nút submit nền xanh (green), :focus nền vàng, nút submit:focus nền đỏ, thẻ <select> chọn lớp 12A1, 12A2, 12A3.",["Biểu mẫu rộng tổng cộng 300px và được đặt chính giữa trang theo chiều ngang.","Nút Đăng kí tô màu xanh, khi nháy chọn để gửi thì nền nút chuyển sang màu đỏ.","Khi nháy chọn vào các ô nhập dữ liệu, màu nền của ô vẫn được giữ như cũ.","Biểu mẫu cho phép chọn nhiều lớp khác nhau trong một lần đăng kí."],"ĐĐSS"]]];
+function drawTF(){const t=TF[ti],b=B[ti],n=t.length;$("t").textContent=T[ti].n+" · Đúng/Sai";
+if(!n){$("sc").textContent="";$("gr").innerHTML="";$("cd").innerHTML="Chủ đề này chưa có câu đúng/sai.";$("pv").disabled=$("nx").disabled=true;return}
+const fin=i=>b[i]&&[0,1,2,3].every(j=>b[i][j]),pts=i=>b[i]?[0,1,2,3].filter(j=>b[i][j]==t[i][2][j]).length:0;
+$("sc").textContent=`Đã xong ${t.filter((_,i)=>fin(i)).length}/${n} câu · Đúng ${t.reduce((s,_,i)=>s+pts(i),0)} ý`;
+$("gr").innerHTML=t.map((_,i)=>`<button class="${i==qi?'cur ':''}${fin(i)?(pts(i)==4?'ok':'no'):''}" onclick="qi=${i};draw()">${i+1}</button>`).join("");
+const q=t[qi],e=s=>s.replace(/</g,"&lt;");
+$("cd").innerHTML=`<p class="q">Câu ${qi+1}. ${e(q[0])}</p>`+q[1].map((s,j)=>{const v=b[qi]&&b[qi][j];return `<div class="st"><b>${"abcd"[j]}) ${e(s)}</b>`+["Đ","S"].map(c=>`<button class="tf ${v?(c==q[2][j]?'ok':c==v?'no':''):''}" ${v?'disabled':''} onclick="tf(${j},'${c}')">${c=="Đ"?"Đúng":"Sai"}</button>`).join("")+`</div>`}).join("")+(fin(qi)?`<div class="ex"><b>Được ${pts(qi)}/4 ý.</b> Đáp án: ${[...q[2]].map((c,j)=>"abcd"[j]+"–"+(c=="Đ"?"Đúng":"Sai")).join(", ")}.</div>`:"");
+$("pv").disabled=qi==0;$("nx").disabled=qi==n-1}
+function tf(j,c){(B[ti][qi]=B[ti][qi]||[])[j]=c;draw()}
+$("pv").onclick=()=>{qi--;draw()};$("nx").onclick=()=>{qi++;draw()};
+$("rs").onclick=()=>{A[ti]={};B[ti]={};qi=0;draw()};draw();
+</script></body></html>
